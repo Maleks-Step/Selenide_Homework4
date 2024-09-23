@@ -12,8 +12,8 @@ public class SoftAssertionsTest {
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://github.com";
-        Configuration.holdBrowserOpen = true; // не закрывает браузер
-        // Configuration.pageLoadStrategy = "eager"; убрано из-за медленной техники
+        // Configuration.holdBrowserOpen = true;
+        Configuration.pageLoadStrategy = "eager";
 }
 
 @Test
@@ -21,6 +21,8 @@ void jUnitSoftAssertions() {
 
         Selenide.open("/selenide/selenide"); //Откройте страницу Selenide в Github
         $("#wiki-tab").click();
+        $(".js-wiki-more-pages-link").click();
+        $("#wiki-pages-box").shouldHave(text("SoftAssertions"));
         $(".markdown-body").$("[href='/selenide/selenide/wiki/SoftAssertions']").click();
         $("#wiki-body").shouldHave(text(""" 
                 @ExtendWith({SoftAssertsExtension.class})
