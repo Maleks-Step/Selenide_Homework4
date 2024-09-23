@@ -19,7 +19,7 @@ public class SoftAssertionsTest {
 @Test
 void jUnitSoftAssertions() {
 
-        Selenide.open("/selenide/selenide"); //Откройте страницу Selenide в Github
+        Selenide.open("/selenide/selenide");
         $("#wiki-tab").click();
         $(".js-wiki-more-pages-link").click();
         $("#wiki-pages-box").shouldHave(text("SoftAssertions"));
